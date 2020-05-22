@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model long
+<div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>@Localizer["Title"]</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
+            </div>
+            <div class="modal-body">
+                <p>@Localizer["QRMessage1"]</p>
+                <div class="alert alert-warning">
+                    @Localizer["QRMessage2"]
+                </div>
+                <div class="text-center">
+                    <img id="qr-code-img" style="max-width: 100%" />
+                </div>
+                <form asp-action="SendToEmail" asp-controller="QRCodes" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input name="userId" type="text" value="@Model" hidden />
+                        <input name="uploadFileId" id="file-id" type="text" hidden />
+                        <input name="email" type="email" id="email" placeholder="E-mail address" style="min-width:100%" />
+                    </div>
+                </form>
+                <button class="btn btn-primary" id="send-qr-button" onclick="sendQR(new BigNumber(@(Html.Raw($"'{Model.ToString()}'"))))">@Localizer["Send"]</button>
+                <script type="text/javascript">
+                    getQr(new BigNumber(@(Html.Raw($"'{Model.ToString()}'"))));
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

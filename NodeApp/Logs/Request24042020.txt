@@ -1,0 +1,11 @@
+﻿
+***
+UserId:0
+IP-address:
+::1
+Time:
+24.04.2020 0:33:31
+Request:
+{"IsRegistration":false,"VerificationType":0,"Uid":"+79131743886","RequestId":-7705233235998207138,"RequestType":42,"Type":0}
+Response:
+{"Message":"{\"VerificationType\":\"Server does not support the specified type of verification\"}","RequestId":-7705233235998207138,"ResponseType":10,"ErrorCode":17,"Type":1}

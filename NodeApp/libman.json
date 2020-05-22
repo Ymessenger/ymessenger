@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "library": "qrcode@1.4.4",
+      "destination": "wwwroot/qrcode/",
+      "files": [
+        "build/qrcode.min.js"
+      ]
+    }
+  ]
+}

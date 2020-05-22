@@ -1,0 +1,509 @@
+﻿
+***
+Time:
+24.04.2020 0:16:32
+Exception:
+StackExchange.Redis.RedisConnectionException: No connection is available to service this operation: LLEN LSEGMENTS; SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 93348s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago ---> StackExchange.Redis.RedisConnectionException: SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 93348s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago
+   --- End of inner exception stack trace ---
+   at StackExchange.Redis.ConnectionMultiplexer.ThrowFailed[T](TaskCompletionSource`1 source, Exception unthrownException) in c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:line 2000
+--- End of stack trace from previous location where exception was thrown ---
+   at NodeApp.CacheStorageClasses.RedisBlockSegmentRepository.GetCount(String key) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\CacheStorageClasses\RedisBlockSegmentRepository.cs:line 49
+   at NodeApp.Blockchain.BlockSegmentsCacheService.GetBlockSegmentsCount() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockSegmentsCacheService.cs:line 51
+   at NodeApp.Blockchain.AppBlockGenerationHelper.CheckQueueAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 81
+   at NodeApp.Blockchain.AppBlockGenerationHelper.<.ctor>b__8_0() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 46
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:16:34
+Exception:
+System.AggregateException: One or more errors occurred. (Invalid URI: The hostname could not be parsed.) ---> System.UriFormatException: Invalid URI: The hostname could not be parsed.
+   at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   at System.Uri..ctor(String uriString)
+   at NodeApp.LicensorClasses.LicensorClient.ConnectAndListenAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\LicensorClasses\LicensorClient.cs:line 103
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.Wait()
+   at NodeApp.LicensorClasses.LicensorClient..ctor() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\LicensorClasses\LicensorClient.cs:line 66
+---> (Inner Exception #0) System.UriFormatException: Invalid URI: The hostname could not be parsed.
+   at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   at System.Uri..ctor(String uriString)
+   at NodeApp.LicensorClasses.LicensorClient.ConnectAndListenAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\LicensorClasses\LicensorClient.cs:line 103<---
+
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:16:35
+Exception:
+System.UriFormatException: Invalid URI: The hostname could not be parsed.
+   at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   at System.Uri..ctor(String uriString)
+   at NodeApp.LicensorClasses.LicensorClient.ConnectAndListenAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\LicensorClasses\LicensorClient.cs:line 103
+   at NodeApp.LicensorClasses.LicensorClient.TryConnectAsync(Boolean authRequired) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\LicensorClasses\LicensorClient.cs:line 81
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:16:35
+Exception:
+NodeApp.LicensorException: Unable to establish connection with licensor.
+   at NodeApp.LicensorClasses.LicensorClient.GetLicenseAsync(Nullable`1 nodeId) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\LicensorClasses\LicensorClient.cs:line 447
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:16:35
+Exception:
+System.UriFormatException: Invalid URI: The hostname could not be parsed.
+   at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   at System.Uri..ctor(String uriString)
+   at NodeApp.LicensorClasses.LicensorClient.ConnectAndListenAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\LicensorClasses\LicensorClient.cs:line 103
+   at NodeApp.LicensorClasses.LicensorClient.TryConnectAsync(Boolean authRequired) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\LicensorClasses\LicensorClient.cs:line 81
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:16:35
+Exception:
+NodeApp.LicensorException: Unable to establish connection with licensor.
+   at NodeApp.LicensorClasses.LicensorClient.GetLicenseAsync(Nullable`1 nodeId) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\LicensorClasses\LicensorClient.cs:line 447
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:16:35
+Exception:
+System.AggregateException: One or more errors occurred. (Синтаксическая ошибка в имени файла, имени папки или метке тома : 'D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\https:\api\Blockchain\FindMatch') ---> System.Net.WebException: Синтаксическая ошибка в имени файла, имени папки или метке тома : 'D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\https:\api\Blockchain\FindMatch' ---> System.IO.IOException: Синтаксическая ошибка в имени файла, имени папки или метке тома : 'D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\https:\api\Blockchain\FindMatch'
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.Net.FileWebRequest.CreateWriteStream()
+   --- End of inner exception stack trace ---
+   at System.Net.FileWebRequest.CreateWriteStream()
+   at System.Net.FileWebRequest.<>c.<GetRequestStreamAsync>b__56_0(Object s)
+   at System.Threading.Tasks.Task`1.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__275_1(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Net.WebClient.UploadBitsAsync(WebRequest request, Stream readStream, Byte[] buffer, Int32 chunkSize, Byte[] header, Byte[] footer, AsyncOperation asyncOp, Action`3 completionDelegate)
+   at NodeApp.Blockchain.BlockchainSynchronizationService.CommonBlockchainPartSearchAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockchainSynchronizationService.cs:line 128
+   at NodeApp.Blockchain.BlockchainSynchronizationService.CheckAndSyncBlockchainAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockchainSynchronizationService.cs:line 31
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.Wait()
+   at NodeApp.Startup.Configure(IApplicationBuilder app, IApplicationLifetime applicationLifetime) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Startup.cs:line 248
+---> (Inner Exception #0) System.Net.WebException: Синтаксическая ошибка в имени файла, имени папки или метке тома : 'D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\https:\api\Blockchain\FindMatch' ---> System.IO.IOException: Синтаксическая ошибка в имени файла, имени папки или метке тома : 'D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\https:\api\Blockchain\FindMatch'
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.Net.FileWebRequest.CreateWriteStream()
+   --- End of inner exception stack trace ---
+   at System.Net.FileWebRequest.CreateWriteStream()
+   at System.Net.FileWebRequest.<>c.<GetRequestStreamAsync>b__56_0(Object s)
+   at System.Threading.Tasks.Task`1.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__275_1(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Net.WebClient.UploadBitsAsync(WebRequest request, Stream readStream, Byte[] buffer, Int32 chunkSize, Byte[] header, Byte[] footer, AsyncOperation asyncOp, Action`3 completionDelegate)
+   at NodeApp.Blockchain.BlockchainSynchronizationService.CommonBlockchainPartSearchAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockchainSynchronizationService.cs:line 128
+   at NodeApp.Blockchain.BlockchainSynchronizationService.CheckAndSyncBlockchainAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockchainSynchronizationService.cs:line 31<---
+
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:17:03
+Exception:
+StackExchange.Redis.RedisConnectionException: No connection is available to service this operation: LLEN LSEGMENTS; SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 93348s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago ---> StackExchange.Redis.RedisConnectionException: SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 93348s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago
+   --- End of inner exception stack trace ---
+   at StackExchange.Redis.ConnectionMultiplexer.ThrowFailed[T](TaskCompletionSource`1 source, Exception unthrownException) in c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:line 2000
+--- End of stack trace from previous location where exception was thrown ---
+   at NodeApp.CacheStorageClasses.RedisBlockSegmentRepository.GetCount(String key) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\CacheStorageClasses\RedisBlockSegmentRepository.cs:line 49
+   at NodeApp.Blockchain.BlockSegmentsCacheService.GetBlockSegmentsCount() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockSegmentsCacheService.cs:line 51
+   at NodeApp.Blockchain.AppBlockGenerationHelper.CheckQueueAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 81
+   at NodeApp.Blockchain.AppBlockGenerationHelper.<.ctor>b__8_0() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 46
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:17:33
+Exception:
+StackExchange.Redis.RedisConnectionException: No connection is available to service this operation: LLEN LSEGMENTS; SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 93348s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago ---> StackExchange.Redis.RedisConnectionException: SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 93348s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago
+   --- End of inner exception stack trace ---
+   at StackExchange.Redis.ConnectionMultiplexer.ThrowFailed[T](TaskCompletionSource`1 source, Exception unthrownException) in c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:line 2000
+--- End of stack trace from previous location where exception was thrown ---
+   at NodeApp.CacheStorageClasses.RedisBlockSegmentRepository.GetCount(String key) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\CacheStorageClasses\RedisBlockSegmentRepository.cs:line 49
+   at NodeApp.Blockchain.BlockSegmentsCacheService.GetBlockSegmentsCount() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockSegmentsCacheService.cs:line 51
+   at NodeApp.Blockchain.AppBlockGenerationHelper.CheckQueueAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 81
+   at NodeApp.Blockchain.AppBlockGenerationHelper.<.ctor>b__8_0() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 46
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:18:03
+Exception:
+StackExchange.Redis.RedisConnectionException: No connection is available to service this operation: LLEN LSEGMENTS; SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 93348s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago ---> StackExchange.Redis.RedisConnectionException: SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 93348s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago
+   --- End of inner exception stack trace ---
+   at StackExchange.Redis.ConnectionMultiplexer.ThrowFailed[T](TaskCompletionSource`1 source, Exception unthrownException) in c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:line 2000
+--- End of stack trace from previous location where exception was thrown ---
+   at NodeApp.CacheStorageClasses.RedisBlockSegmentRepository.GetCount(String key) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\CacheStorageClasses\RedisBlockSegmentRepository.cs:line 49
+   at NodeApp.Blockchain.BlockSegmentsCacheService.GetBlockSegmentsCount() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockSegmentsCacheService.cs:line 51
+   at NodeApp.Blockchain.AppBlockGenerationHelper.CheckQueueAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 81
+   at NodeApp.Blockchain.AppBlockGenerationHelper.<.ctor>b__8_0() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 46
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:18:34
+Exception:
+StackExchange.Redis.RedisConnectionException: No connection is available to service this operation: LLEN LSEGMENTS; SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 93348s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago ---> StackExchange.Redis.RedisConnectionException: SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 93348s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago
+   --- End of inner exception stack trace ---
+   at StackExchange.Redis.ConnectionMultiplexer.ThrowFailed[T](TaskCompletionSource`1 source, Exception unthrownException) in c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:line 2000
+--- End of stack trace from previous location where exception was thrown ---
+   at NodeApp.CacheStorageClasses.RedisBlockSegmentRepository.GetCount(String key) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\CacheStorageClasses\RedisBlockSegmentRepository.cs:line 49
+   at NodeApp.Blockchain.BlockSegmentsCacheService.GetBlockSegmentsCount() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockSegmentsCacheService.cs:line 51
+   at NodeApp.Blockchain.AppBlockGenerationHelper.CheckQueueAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 81
+   at NodeApp.Blockchain.AppBlockGenerationHelper.<.ctor>b__8_0() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 46
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:19:04
+Exception:
+StackExchange.Redis.RedisConnectionException: No connection is available to service this operation: LLEN LSEGMENTS; SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 93348s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago ---> StackExchange.Redis.RedisConnectionException: SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 93348s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago
+   --- End of inner exception stack trace ---
+   at StackExchange.Redis.ConnectionMultiplexer.ThrowFailed[T](TaskCompletionSource`1 source, Exception unthrownException) in c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:line 2000
+--- End of stack trace from previous location where exception was thrown ---
+   at NodeApp.CacheStorageClasses.RedisBlockSegmentRepository.GetCount(String key) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\CacheStorageClasses\RedisBlockSegmentRepository.cs:line 49
+   at NodeApp.Blockchain.BlockSegmentsCacheService.GetBlockSegmentsCount() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockSegmentsCacheService.cs:line 51
+   at NodeApp.Blockchain.AppBlockGenerationHelper.CheckQueueAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 81
+   at NodeApp.Blockchain.AppBlockGenerationHelper.<.ctor>b__8_0() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 46
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:19:34
+Exception:
+StackExchange.Redis.RedisConnectionException: No connection is available to service this operation: LLEN LSEGMENTS; SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 93348s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago ---> StackExchange.Redis.RedisConnectionException: SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 93348s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago
+   --- End of inner exception stack trace ---
+   at StackExchange.Redis.ConnectionMultiplexer.ThrowFailed[T](TaskCompletionSource`1 source, Exception unthrownException) in c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:line 2000
+--- End of stack trace from previous location where exception was thrown ---
+   at NodeApp.CacheStorageClasses.RedisBlockSegmentRepository.GetCount(String key) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\CacheStorageClasses\RedisBlockSegmentRepository.cs:line 49
+   at NodeApp.Blockchain.BlockSegmentsCacheService.GetBlockSegmentsCount() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockSegmentsCacheService.cs:line 51
+   at NodeApp.Blockchain.AppBlockGenerationHelper.CheckQueueAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 81
+   at NodeApp.Blockchain.AppBlockGenerationHelper.<.ctor>b__8_0() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 46
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:28:29
+Exception:
+StackExchange.Redis.RedisConnectionException: No connection is available to service this operation: LLEN LSEGMENTS; SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago ---> StackExchange.Redis.RedisConnectionException: SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago
+   --- End of inner exception stack trace ---
+   at StackExchange.Redis.ConnectionMultiplexer.ThrowFailed[T](TaskCompletionSource`1 source, Exception unthrownException) in c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:line 2000
+--- End of stack trace from previous location where exception was thrown ---
+   at NodeApp.CacheStorageClasses.RedisBlockSegmentRepository.GetCount(String key) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\CacheStorageClasses\RedisBlockSegmentRepository.cs:line 49
+   at NodeApp.Blockchain.BlockSegmentsCacheService.GetBlockSegmentsCount() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockSegmentsCacheService.cs:line 51
+   at NodeApp.Blockchain.AppBlockGenerationHelper.CheckQueueAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 81
+   at NodeApp.Blockchain.AppBlockGenerationHelper.<.ctor>b__8_0() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 46
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:28:31
+Exception:
+System.AggregateException: One or more errors occurred. (Invalid URI: The hostname could not be parsed.) ---> System.UriFormatException: Invalid URI: The hostname could not be parsed.
+   at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   at System.Uri..ctor(String uriString)
+   at NodeApp.LicensorClasses.LicensorClient.ConnectAndListenAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\LicensorClasses\LicensorClient.cs:line 103
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.Wait()
+   at NodeApp.LicensorClasses.LicensorClient..ctor() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\LicensorClasses\LicensorClient.cs:line 66
+---> (Inner Exception #0) System.UriFormatException: Invalid URI: The hostname could not be parsed.
+   at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   at System.Uri..ctor(String uriString)
+   at NodeApp.LicensorClasses.LicensorClient.ConnectAndListenAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\LicensorClasses\LicensorClient.cs:line 103<---
+
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:28:31
+Exception:
+System.UriFormatException: Invalid URI: The hostname could not be parsed.
+   at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   at System.Uri..ctor(String uriString)
+   at NodeApp.LicensorClasses.LicensorClient.ConnectAndListenAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\LicensorClasses\LicensorClient.cs:line 103
+   at NodeApp.LicensorClasses.LicensorClient.TryConnectAsync(Boolean authRequired) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\LicensorClasses\LicensorClient.cs:line 81
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:28:31
+Exception:
+NodeApp.LicensorException: Unable to establish connection with licensor.
+   at NodeApp.LicensorClasses.LicensorClient.GetLicenseAsync(Nullable`1 nodeId) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\LicensorClasses\LicensorClient.cs:line 447
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:28:31
+Exception:
+System.UriFormatException: Invalid URI: The hostname could not be parsed.
+   at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   at System.Uri..ctor(String uriString)
+   at NodeApp.LicensorClasses.LicensorClient.ConnectAndListenAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\LicensorClasses\LicensorClient.cs:line 103
+   at NodeApp.LicensorClasses.LicensorClient.TryConnectAsync(Boolean authRequired) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\LicensorClasses\LicensorClient.cs:line 81
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:28:31
+Exception:
+NodeApp.LicensorException: Unable to establish connection with licensor.
+   at NodeApp.LicensorClasses.LicensorClient.GetLicenseAsync(Nullable`1 nodeId) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\LicensorClasses\LicensorClient.cs:line 447
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:28:31
+Exception:
+System.AggregateException: One or more errors occurred. (Синтаксическая ошибка в имени файла, имени папки или метке тома : 'D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\https:\api\Blockchain\FindMatch') ---> System.Net.WebException: Синтаксическая ошибка в имени файла, имени папки или метке тома : 'D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\https:\api\Blockchain\FindMatch' ---> System.IO.IOException: Синтаксическая ошибка в имени файла, имени папки или метке тома : 'D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\https:\api\Blockchain\FindMatch'
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.Net.FileWebRequest.CreateWriteStream()
+   --- End of inner exception stack trace ---
+   at System.Net.FileWebRequest.CreateWriteStream()
+   at System.Net.FileWebRequest.<>c.<GetRequestStreamAsync>b__56_0(Object s)
+   at System.Threading.Tasks.Task`1.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__275_1(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Net.WebClient.UploadBitsAsync(WebRequest request, Stream readStream, Byte[] buffer, Int32 chunkSize, Byte[] header, Byte[] footer, AsyncOperation asyncOp, Action`3 completionDelegate)
+   at NodeApp.Blockchain.BlockchainSynchronizationService.CommonBlockchainPartSearchAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockchainSynchronizationService.cs:line 128
+   at NodeApp.Blockchain.BlockchainSynchronizationService.CheckAndSyncBlockchainAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockchainSynchronizationService.cs:line 31
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.Wait()
+   at NodeApp.Startup.Configure(IApplicationBuilder app, IApplicationLifetime applicationLifetime) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Startup.cs:line 248
+---> (Inner Exception #0) System.Net.WebException: Синтаксическая ошибка в имени файла, имени папки или метке тома : 'D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\https:\api\Blockchain\FindMatch' ---> System.IO.IOException: Синтаксическая ошибка в имени файла, имени папки или метке тома : 'D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\https:\api\Blockchain\FindMatch'
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.Net.FileWebRequest.CreateWriteStream()
+   --- End of inner exception stack trace ---
+   at System.Net.FileWebRequest.CreateWriteStream()
+   at System.Net.FileWebRequest.<>c.<GetRequestStreamAsync>b__56_0(Object s)
+   at System.Threading.Tasks.Task`1.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__275_1(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Net.WebClient.UploadBitsAsync(WebRequest request, Stream readStream, Byte[] buffer, Int32 chunkSize, Byte[] header, Byte[] footer, AsyncOperation asyncOp, Action`3 completionDelegate)
+   at NodeApp.Blockchain.BlockchainSynchronizationService.CommonBlockchainPartSearchAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockchainSynchronizationService.cs:line 128
+   at NodeApp.Blockchain.BlockchainSynchronizationService.CheckAndSyncBlockchainAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockchainSynchronizationService.cs:line 31<---
+
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:29:00
+Exception:
+StackExchange.Redis.RedisConnectionException: No connection is available to service this operation: LLEN LSEGMENTS; SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago ---> StackExchange.Redis.RedisConnectionException: SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago
+   --- End of inner exception stack trace ---
+   at StackExchange.Redis.ConnectionMultiplexer.ThrowFailed[T](TaskCompletionSource`1 source, Exception unthrownException) in c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:line 2000
+--- End of stack trace from previous location where exception was thrown ---
+   at NodeApp.CacheStorageClasses.RedisBlockSegmentRepository.GetCount(String key) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\CacheStorageClasses\RedisBlockSegmentRepository.cs:line 49
+   at NodeApp.Blockchain.BlockSegmentsCacheService.GetBlockSegmentsCount() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockSegmentsCacheService.cs:line 51
+   at NodeApp.Blockchain.AppBlockGenerationHelper.CheckQueueAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 81
+   at NodeApp.Blockchain.AppBlockGenerationHelper.<.ctor>b__8_0() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 46
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:29:30
+Exception:
+StackExchange.Redis.RedisConnectionException: No connection is available to service this operation: LLEN LSEGMENTS; SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago ---> StackExchange.Redis.RedisConnectionException: SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago
+   --- End of inner exception stack trace ---
+   at StackExchange.Redis.ConnectionMultiplexer.ThrowFailed[T](TaskCompletionSource`1 source, Exception unthrownException) in c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:line 2000
+--- End of stack trace from previous location where exception was thrown ---
+   at NodeApp.CacheStorageClasses.RedisBlockSegmentRepository.GetCount(String key) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\CacheStorageClasses\RedisBlockSegmentRepository.cs:line 49
+   at NodeApp.Blockchain.BlockSegmentsCacheService.GetBlockSegmentsCount() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockSegmentsCacheService.cs:line 51
+   at NodeApp.Blockchain.AppBlockGenerationHelper.CheckQueueAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 81
+   at NodeApp.Blockchain.AppBlockGenerationHelper.<.ctor>b__8_0() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 46
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:30:00
+Exception:
+StackExchange.Redis.RedisConnectionException: No connection is available to service this operation: LLEN LSEGMENTS; SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago ---> StackExchange.Redis.RedisConnectionException: SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago
+   --- End of inner exception stack trace ---
+   at StackExchange.Redis.ConnectionMultiplexer.ThrowFailed[T](TaskCompletionSource`1 source, Exception unthrownException) in c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:line 2000
+--- End of stack trace from previous location where exception was thrown ---
+   at NodeApp.CacheStorageClasses.RedisBlockSegmentRepository.GetCount(String key) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\CacheStorageClasses\RedisBlockSegmentRepository.cs:line 49
+   at NodeApp.Blockchain.BlockSegmentsCacheService.GetBlockSegmentsCount() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockSegmentsCacheService.cs:line 51
+   at NodeApp.Blockchain.AppBlockGenerationHelper.CheckQueueAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 81
+   at NodeApp.Blockchain.AppBlockGenerationHelper.<.ctor>b__8_0() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 46
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:30:30
+Exception:
+StackExchange.Redis.RedisConnectionException: No connection is available to service this operation: LLEN LSEGMENTS; SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago ---> StackExchange.Redis.RedisConnectionException: SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago
+   --- End of inner exception stack trace ---
+   at StackExchange.Redis.ConnectionMultiplexer.ThrowFailed[T](TaskCompletionSource`1 source, Exception unthrownException) in c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:line 2000
+--- End of stack trace from previous location where exception was thrown ---
+   at NodeApp.CacheStorageClasses.RedisBlockSegmentRepository.GetCount(String key) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\CacheStorageClasses\RedisBlockSegmentRepository.cs:line 49
+   at NodeApp.Blockchain.BlockSegmentsCacheService.GetBlockSegmentsCount() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockSegmentsCacheService.cs:line 51
+   at NodeApp.Blockchain.AppBlockGenerationHelper.CheckQueueAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 81
+   at NodeApp.Blockchain.AppBlockGenerationHelper.<.ctor>b__8_0() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 46
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:31:00
+Exception:
+StackExchange.Redis.RedisConnectionException: No connection is available to service this operation: LLEN LSEGMENTS; SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago ---> StackExchange.Redis.RedisConnectionException: SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago
+   --- End of inner exception stack trace ---
+   at StackExchange.Redis.ConnectionMultiplexer.ThrowFailed[T](TaskCompletionSource`1 source, Exception unthrownException) in c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:line 2000
+--- End of stack trace from previous location where exception was thrown ---
+   at NodeApp.CacheStorageClasses.RedisBlockSegmentRepository.GetCount(String key) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\CacheStorageClasses\RedisBlockSegmentRepository.cs:line 49
+   at NodeApp.Blockchain.BlockSegmentsCacheService.GetBlockSegmentsCount() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockSegmentsCacheService.cs:line 51
+   at NodeApp.Blockchain.AppBlockGenerationHelper.CheckQueueAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 81
+   at NodeApp.Blockchain.AppBlockGenerationHelper.<.ctor>b__8_0() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 46
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:31:30
+Exception:
+StackExchange.Redis.RedisConnectionException: No connection is available to service this operation: LLEN LSEGMENTS; SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago ---> StackExchange.Redis.RedisConnectionException: SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago
+   --- End of inner exception stack trace ---
+   at StackExchange.Redis.ConnectionMultiplexer.ThrowFailed[T](TaskCompletionSource`1 source, Exception unthrownException) in c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:line 2000
+--- End of stack trace from previous location where exception was thrown ---
+   at NodeApp.CacheStorageClasses.RedisBlockSegmentRepository.GetCount(String key) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\CacheStorageClasses\RedisBlockSegmentRepository.cs:line 49
+   at NodeApp.Blockchain.BlockSegmentsCacheService.GetBlockSegmentsCount() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockSegmentsCacheService.cs:line 51
+   at NodeApp.Blockchain.AppBlockGenerationHelper.CheckQueueAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 81
+   at NodeApp.Blockchain.AppBlockGenerationHelper.<.ctor>b__8_0() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 46
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:32:00
+Exception:
+StackExchange.Redis.RedisConnectionException: No connection is available to service this operation: LLEN LSEGMENTS; SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago ---> StackExchange.Redis.RedisConnectionException: SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago
+   --- End of inner exception stack trace ---
+   at StackExchange.Redis.ConnectionMultiplexer.ThrowFailed[T](TaskCompletionSource`1 source, Exception unthrownException) in c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:line 2000
+--- End of stack trace from previous location where exception was thrown ---
+   at NodeApp.CacheStorageClasses.RedisBlockSegmentRepository.GetCount(String key) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\CacheStorageClasses\RedisBlockSegmentRepository.cs:line 49
+   at NodeApp.Blockchain.BlockSegmentsCacheService.GetBlockSegmentsCount() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockSegmentsCacheService.cs:line 51
+   at NodeApp.Blockchain.AppBlockGenerationHelper.CheckQueueAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 81
+   at NodeApp.Blockchain.AppBlockGenerationHelper.<.ctor>b__8_0() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 46
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:32:30
+Exception:
+StackExchange.Redis.RedisConnectionException: No connection is available to service this operation: LLEN LSEGMENTS; SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago ---> StackExchange.Redis.RedisConnectionException: SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago
+   --- End of inner exception stack trace ---
+   at StackExchange.Redis.ConnectionMultiplexer.ThrowFailed[T](TaskCompletionSource`1 source, Exception unthrownException) in c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:line 2000
+--- End of stack trace from previous location where exception was thrown ---
+   at NodeApp.CacheStorageClasses.RedisBlockSegmentRepository.GetCount(String key) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\CacheStorageClasses\RedisBlockSegmentRepository.cs:line 49
+   at NodeApp.Blockchain.BlockSegmentsCacheService.GetBlockSegmentsCount() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockSegmentsCacheService.cs:line 51
+   at NodeApp.Blockchain.AppBlockGenerationHelper.CheckQueueAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 81
+   at NodeApp.Blockchain.AppBlockGenerationHelper.<.ctor>b__8_0() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 46
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:33:00
+Exception:
+StackExchange.Redis.RedisConnectionException: No connection is available to service this operation: LLEN LSEGMENTS; SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago ---> StackExchange.Redis.RedisConnectionException: SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago
+   --- End of inner exception stack trace ---
+   at StackExchange.Redis.ConnectionMultiplexer.ThrowFailed[T](TaskCompletionSource`1 source, Exception unthrownException) in c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:line 2000
+--- End of stack trace from previous location where exception was thrown ---
+   at NodeApp.CacheStorageClasses.RedisBlockSegmentRepository.GetCount(String key) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\CacheStorageClasses\RedisBlockSegmentRepository.cs:line 49
+   at NodeApp.Blockchain.BlockSegmentsCacheService.GetBlockSegmentsCount() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockSegmentsCacheService.cs:line 51
+   at NodeApp.Blockchain.AppBlockGenerationHelper.CheckQueueAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 81
+   at NodeApp.Blockchain.AppBlockGenerationHelper.<.ctor>b__8_0() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 46
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:33:30
+Exception:
+StackExchange.Redis.RedisConnectionException: No connection is available to service this operation: LLEN LSEGMENTS; SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago ---> StackExchange.Redis.RedisConnectionException: SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago
+   --- End of inner exception stack trace ---
+   at StackExchange.Redis.ConnectionMultiplexer.ThrowFailed[T](TaskCompletionSource`1 source, Exception unthrownException) in c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:line 2000
+--- End of stack trace from previous location where exception was thrown ---
+   at NodeApp.CacheStorageClasses.RedisBlockSegmentRepository.GetCount(String key) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\CacheStorageClasses\RedisBlockSegmentRepository.cs:line 49
+   at NodeApp.Blockchain.BlockSegmentsCacheService.GetBlockSegmentsCount() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockSegmentsCacheService.cs:line 51
+   at NodeApp.Blockchain.AppBlockGenerationHelper.CheckQueueAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 81
+   at NodeApp.Blockchain.AppBlockGenerationHelper.<.ctor>b__8_0() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 46
+TEXT:
+
+
+***
+Time:
+24.04.2020 0:34:00
+Exception:
+StackExchange.Redis.RedisConnectionException: No connection is available to service this operation: LLEN LSEGMENTS; SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago ---> StackExchange.Redis.RedisConnectionException: SocketFailure on 127.0.0.1:6379/Subscription, origin: Error, input-buffer: 0, outstanding: 0, last-read: 1s ago, last-write: 1s ago, unanswered-write: 94065s ago, keep-alive: 60s, pending: 0, state: Connecting, last-heartbeat: never, last-mbeat: -1s ago, global: 1s ago
+   --- End of inner exception stack trace ---
+   at StackExchange.Redis.ConnectionMultiplexer.ThrowFailed[T](TaskCompletionSource`1 source, Exception unthrownException) in c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:line 2000
+--- End of stack trace from previous location where exception was thrown ---
+   at NodeApp.CacheStorageClasses.RedisBlockSegmentRepository.GetCount(String key) in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\CacheStorageClasses\RedisBlockSegmentRepository.cs:line 49
+   at NodeApp.Blockchain.BlockSegmentsCacheService.GetBlockSegmentsCount() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\BlockSegmentsCacheService.cs:line 51
+   at NodeApp.Blockchain.AppBlockGenerationHelper.CheckQueueAsync() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 81
+   at NodeApp.Blockchain.AppBlockGenerationHelper.<.ctor>b__8_0() in D:\OldNotebookWindows\Users\user\Documents\ymessenger\NodeApp\Blockchain\AppBlockGenerationHelper.cs:line 46
+TEXT:
+

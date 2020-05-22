@@ -1,0 +1,74 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Dashboard"];
+}
+<!DOCTYPE html>
+
+<html>
+<body>
+    <div class="card">
+        <a class="btn" asp-controller="Backup" style="background-color:white">
+            <div class="card-body">
+                <h5 class="card-title">@Localizer["DatabaseBackups"]</h5>
+                <p class="card-text">@Localizer["BackupsDescr"]</p>
+            </div>
+        </a>
+    </div>
+    <div class="card">
+        <a class="btn" asp-controller="Logs" style="background-color:white">
+            <div class="card-body">
+                <h5 class="card-title">@Localizer["Logs"]</h5>
+                <p class="card-text">@Localizer["LogsDescr"]</p>
+            </div>
+        </a>
+    </div>
+    <div class="card">
+        <a class="btn" asp-controller="Users" asp-action="Connected" style="background-color:white">
+            <div class="card-body">
+                <h5 class="card-title">@Localizer["ActiveSessions"]</h5>
+                <p class="card-text">@Localizer["ActiveSessionsDescr"]</p>
+            </div>
+        </a>
+    </div>
+    <div class="card">
+        <a class="btn" asp-controller="Users" style="background-color:white">
+            <div class="card-body">
+                <h5 class="card-title">@Localizer["Users"]</h5>
+                <p class="card-text">@Localizer["UsersDescr"]</p>
+            </div>
+        </a>
+    </div>
+    <div class="card">
+        <a class="btn" asp-controller="Configuration" style="background-color:white">
+            <div class="card-body">
+                <h5 class="card-title">@Localizer["Configuration"]</h5>
+                <p class="card-text">@Localizer["ConfigurationDescr"]</p>
+            </div>
+        </a>
+    </div>
+    <div class="card">
+        <a class="btn" asp-controller="Admin" style="background-color:white">
+            <div class="card-body">
+                <h5 class="card-title">@Localizer["NodeAdministrators"]</h5>
+                <p class="card-text">@Localizer["NodeAdministatorsDescr"]</p>
+            </div>
+        </a>
+    </div>
+</body>
+</html>
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".card").hover(
+                function () {
+                    $(this).addClass('shadow-lg').css('cursor', 'pointer');
+                    $(this).addClass('btn-outline-primary').css('cursor', 'pointer');
+                }, function () {
+                    $(this).removeClass('shadow-lg');
+                    $(this).removeClass('btn-outline-primary');
+                });
+        });
+    </script>
+}

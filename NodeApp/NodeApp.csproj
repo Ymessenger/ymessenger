@@ -1,0 +1,330 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>Exe</OutputType>
+    <StartupObject>NodeApp.Program</StartupObject>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>ymessenger_cert.pfx</AssemblyOriginatorKeyFile>
+    <LangVersion>7.3</LangVersion>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>7.3</LangVersion>
+    <NoWarn>1701;1702;NU1701</NoWarn>
+    <DocumentationFile>
+    </DocumentationFile>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == '' Or '$(Configuration)' == 'Debug'">
+    <EnvironmentName>Development</EnvironmentName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' != '' AND '$(Configuration)' != 'Debug' ">
+    <EnvironmentName>Production</EnvironmentName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Areas\Identity\Controllers\**" />
+    <Compile Remove="Areas\Identity\Views\**" />
+    <Compile Remove="LocalFileStorage\**" />
+    <Compile Remove="Logs\**" />
+    <Compile Remove="Resources\Backup\**" />
+    <Compile Remove="SecurityTest\**" />
+    <Compile Remove="tmp\**" />
+    <Compile Remove="wwwroot\node_modules\**" />
+    <Content Remove="Areas\Identity\Controllers\**" />
+    <Content Remove="Areas\Identity\Views\**" />
+    <Content Remove="LocalFileStorage\**" />
+    <Content Remove="Logs\**" />
+    <Content Remove="Resources\Backup\**" />
+    <Content Remove="SecurityTest\**" />
+    <Content Remove="tmp\**" />
+    <Content Remove="wwwroot\node_modules\**" />
+    <EmbeddedResource Remove="Areas\Identity\Controllers\**" />
+    <EmbeddedResource Remove="Areas\Identity\Views\**" />
+    <EmbeddedResource Remove="LocalFileStorage\**" />
+    <EmbeddedResource Remove="Logs\**" />
+    <EmbeddedResource Remove="Resources\Backup\**" />
+    <EmbeddedResource Remove="SecurityTest\**" />
+    <EmbeddedResource Remove="tmp\**" />
+    <EmbeddedResource Remove="wwwroot\node_modules\**" />
+    <None Remove="Areas\Identity\Controllers\**" />
+    <None Remove="Areas\Identity\Views\**" />
+    <None Remove="LocalFileStorage\**" />
+    <None Remove="Logs\**" />
+    <None Remove="Resources\Backup\**" />
+    <None Remove="SecurityTest\**" />
+    <None Remove="tmp\**" />
+    <None Remove="wwwroot\node_modules\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Interfaces\IKeyStorage.cs" />
+    <Compile Remove="Migrations\20190225053759_FixProblems.cs" />
+    <Compile Remove="Migrations\20190225053759_FixProblems.Designer.cs" />
+    <Compile Remove="Migrations\20190225061054_REINIT.cs" />
+    <Compile Remove="Migrations\20190225061054_REINIT.Designer.cs" />
+    <Compile Remove="Migrations\20190312075010_DateTimeToUnixTimestamp.cs" />
+    <Compile Remove="Migrations\20190312075010_DateTimeToUnixTimestamp.Designer.cs" />
+    <Compile Remove="Migrations\MessengerDb\20190313083947_AddMainFieldPhones.cs" />
+    <Compile Remove="Migrations\MessengerDb\20190313083947_AddMainFieldPhones.Designer.cs" />
+    <Compile Remove="Migrations\MessengerDb\20190417042356_UserPublicKeys.cs" />
+    <Compile Remove="Migrations\MessengerDb\20190417042356_UserPublicKeys.Designer.cs" />
+    <Compile Remove="Migrations\MessengerDb\20190417054755_UsersPublicKeys.cs" />
+    <Compile Remove="Migrations\MessengerDb\20190417054755_UsersPublicKeys.Designer.cs" />
+    <Compile Remove="Migrations\MessengerDb\20190530055947_AddChannelsTable.cs" />
+    <Compile Remove="Migrations\MessengerDb\20190530055947_AddChannelsTable.Designer.cs" />
+    <Compile Remove="Migrations\MessengerDb\20190530070307_AddChannelsTable.cs" />
+    <Compile Remove="Migrations\MessengerDb\20190530070307_AddChannelsTable.Designer.cs" />
+    <Compile Remove="Migrations\MessengerDb\20190530080606_AddChannelsTable.cs" />
+    <Compile Remove="Migrations\MessengerDb\20190530080606_AddChannelsTable.Designer.cs" />
+    <Compile Remove="Migrations\MessengerDb\20190530082433_AddChannelsTable.cs" />
+    <Compile Remove="Migrations\MessengerDb\20190530082433_AddChannelsTable.Designer.cs" />
+    <Compile Remove="Migrations\MessengerDb\20190607072514_UsersTextSearchIndex.cs" />
+    <Compile Remove="Migrations\MessengerDb\20190607072514_UsersTextSearchIndex.Designer.cs" />
+    <Compile Remove="Migrations\MessengerDb\20190725090500_AddNewPollTables.cs" />
+    <Compile Remove="Migrations\MessengerDb\20190725090500_AddNewPollTables.Designer.cs" />
+    <Compile Remove="Migrations\MessengerDb\20191107105628_AddExpiredAt.cs" />
+    <Compile Remove="Migrations\MessengerDb\20191107105628_AddExpiredAt.Designer.cs" />
+    <Compile Remove="Migrations\MessengerDb\20191127110332_AddPollSign.cs" />
+    <Compile Remove="Migrations\MessengerDb\20191127110332_AddPollSign.Designer.cs" />
+    <Compile Remove="Migrations\MessengerDb\20191129070427_AddPendingMessages.cs" />
+    <Compile Remove="Migrations\MessengerDb\20191129070427_AddPendingMessages.Designer.cs" />
+    <Compile Remove="Migrations\MessengerDb\20191223073319_AddNodeId.cs" />
+    <Compile Remove="Migrations\MessengerDb\20191223073319_AddNodeId.Designer.cs" />
+    <Compile Remove="Migrations\MessengerDb\20200110074300_AddUserPrivacy.cs" />
+    <Compile Remove="Migrations\MessengerDb\20200110074300_AddUserPrivacy.Designer.cs" />
+    <Compile Remove="Migrations\MessengerDb\20200304102244_ChangeCascadeToRestrictDeleting.cs" />
+    <Compile Remove="Migrations\MessengerDb\20200304102244_ChangeCascadeToRestrictDeleting.Designer.cs" />
+    <Compile Remove="Migrations\MessengerDb\20200304104111_MessagesCascadeToRestrict.cs" />
+    <Compile Remove="Migrations\MessengerDb\20200304104111_MessagesCascadeToRestrict.Designer.cs" />
+    <Compile Remove="Migrations\MessengerDb\20200304111045_MessagesCascadeToRestrict.cs" />
+    <Compile Remove="Migrations\MessengerDb\20200304111045_MessagesCascadeToRestrict.Designer.cs" />
+    <Compile Remove="Migrations\MessengerDb\20200304112949_MessagesCascadeToRestrict.cs" />
+    <Compile Remove="Migrations\MessengerDb\20200304112949_MessagesCascadeToRestrict.Designer.cs" />
+    <Compile Remove="Migrations\MessengerDb\20200304124338_CascadeToRestrictUserFK.cs" />
+    <Compile Remove="Migrations\MessengerDb\20200304124338_CascadeToRestrictUserFK.Designer.cs" />
+    <Compile Remove="RedisKeyStorage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="ConnectionSettings.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="cert.cer" />
+    <None Remove="client_tokens.txt" />
+    <None Remove="tempurl.txt" />
+    <None Remove="text.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.S3" Version="3.3.110.50" />
+    <PackageReference Include="bootstrap" Version="4.3.1" />
+    <PackageReference Include="FireSharp" Version="2.0.4" />
+    <PackageReference Include="FireSharp.Serialization.JsonNet" Version="1.1.0" />
+    <PackageReference Include="FluffySpoon.AspNet.LetsEncrypt" Version="1.119.0" />
+    <PackageReference Include="Google.LibPhoneNumber" Version="1.0.0" />
+    <PackageReference Include="LinqKit.Core" Version="1.1.16" />
+    <PackageReference Include="MailKit" Version="2.5.2" />
+    <PackageReference Include="Markdown" Version="2.2.1" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="3.5.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.2.6" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Redis" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
+    <PackageReference Include="morelinq" Version="3.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Npgsql" Version="4.1.2" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.2.4" />
+    <PackageReference Include="QRCoder" Version="1.3.9" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.0-beta0007" />
+    <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="1.0.0-beta0004" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.Net.WebSockets.Client" Version="4.3.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="Properties\launchSettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="runtimeconfig.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-api-functions.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\asset-manifest.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="DbBackup\exchange_message_ids.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="DbBackup\get_or_create_dialog_ids.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="DbBackup\get_user_conversations.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="DbBackup\insert_dialog_messages.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <ContentWithTargetPath Include="Lib\libcrypto.a">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>libcrypto.a</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="Lib\libcrypto.so.1.1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>libcrypto.so.1.1</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="Lib\libssl.a">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>libssl.a</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="Lib\libssl.so.1.1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>libssl.so.1.1</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="Lib\libYSecuritySO.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>libYSecuritySO.so</TargetPath>
+    </ContentWithTargetPath>
+    <None Update="Lib\ObjectsLibrary.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ymessenger_node.dockerfile">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <None Include="wwwroot\static\css\2.41a373cd.chunk.css.map" />
+    <None Include="wwwroot\static\css\2.7f669fb7.chunk.css.map" />
+    <None Include="wwwroot\static\css\2.ff8bd605.chunk.css.map" />
+    <None Include="wwwroot\static\css\main.1cf22259.chunk.css.map" />
+    <None Include="wwwroot\static\css\main.42273047.chunk.css.map" />
+    <None Include="wwwroot\static\css\main.65ff639b.chunk.css.map" />
+    <None Include="wwwroot\static\css\main.66a33a7e.chunk.css.map" />
+    <None Include="wwwroot\static\css\main.748e11e2.chunk.css.map" />
+    <None Include="wwwroot\static\css\main.95c1bf89.chunk.css.map" />
+    <None Include="wwwroot\static\css\main.ac05b7e6.chunk.css.map" />
+    <None Include="wwwroot\static\css\main.d2a804c6.chunk.css.map" />
+    <None Include="wwwroot\static\css\main.d335fa49.chunk.css.map" />
+    <None Include="wwwroot\static\js\2.09c78f81.chunk.js" />
+    <None Include="wwwroot\static\js\2.09c78f81.chunk.js.map" />
+    <None Include="wwwroot\static\js\2.0d621139.chunk.js" />
+    <None Include="wwwroot\static\js\2.0d621139.chunk.js.map" />
+    <None Include="wwwroot\static\js\2.14ea5626.chunk.js" />
+    <None Include="wwwroot\static\js\2.14ea5626.chunk.js.map" />
+    <None Include="wwwroot\static\js\2.4223e8a4.chunk.js" />
+    <None Include="wwwroot\static\js\2.4223e8a4.chunk.js.map" />
+    <None Include="wwwroot\static\js\2.45c2942c.chunk.js" />
+    <None Include="wwwroot\static\js\2.45c2942c.chunk.js.map" />
+    <None Include="wwwroot\static\js\2.9c2aca35.chunk.js" />
+    <None Include="wwwroot\static\js\2.9c2aca35.chunk.js.map" />
+    <None Include="wwwroot\static\js\2.a8d65511.chunk.js" />
+    <None Include="wwwroot\static\js\2.a8d65511.chunk.js.map" />
+    <None Include="wwwroot\static\js\2.b59394f4.chunk.js" />
+    <None Include="wwwroot\static\js\2.b59394f4.chunk.js.map" />
+    <None Include="wwwroot\static\js\2.bdcff8ca.chunk.js" />
+    <None Include="wwwroot\static\js\2.bdcff8ca.chunk.js.map" />
+    <None Include="wwwroot\static\js\2.c3d21a12.chunk.js" />
+    <None Include="wwwroot\static\js\2.c3d21a12.chunk.js.map" />
+    <None Include="wwwroot\static\js\2.ec3c8f65.chunk.js" />
+    <None Include="wwwroot\static\js\2.ec3c8f65.chunk.js.map" />
+    <None Include="wwwroot\static\js\2.f4e9dcd1.chunk.js" />
+    <None Include="wwwroot\static\js\2.f4e9dcd1.chunk.js.map" />
+    <None Include="wwwroot\static\js\2.fb829a9a.chunk.js" />
+    <None Include="wwwroot\static\js\2.fb829a9a.chunk.js.map" />
+    <None Include="wwwroot\static\js\main.159eea73.chunk.js" />
+    <None Include="wwwroot\static\js\main.159eea73.chunk.js.map" />
+    <None Include="wwwroot\static\js\main.21d59275.chunk.js" />
+    <None Include="wwwroot\static\js\main.21d59275.chunk.js.map" />
+    <None Include="wwwroot\static\js\main.254b9b45.chunk.js" />
+    <None Include="wwwroot\static\js\main.254b9b45.chunk.js.map" />
+    <None Include="wwwroot\static\js\main.2b2f8d9d.chunk.js" />
+    <None Include="wwwroot\static\js\main.2b2f8d9d.chunk.js.map" />
+    <None Include="wwwroot\static\js\main.2de1dca3.chunk.js" />
+    <None Include="wwwroot\static\js\main.2de1dca3.chunk.js.map" />
+    <None Include="wwwroot\static\js\main.31c3d337.chunk.js" />
+    <None Include="wwwroot\static\js\main.31c3d337.chunk.js.map" />
+    <None Include="wwwroot\static\js\main.3581b7ef.chunk.js" />
+    <None Include="wwwroot\static\js\main.3581b7ef.chunk.js.map" />
+    <None Include="wwwroot\static\js\main.6947559f.chunk.js" />
+    <None Include="wwwroot\static\js\main.6947559f.chunk.js.map" />
+    <None Include="wwwroot\static\js\main.78fdcc20.chunk.js" />
+    <None Include="wwwroot\static\js\main.78fdcc20.chunk.js.map" />
+    <None Include="wwwroot\static\js\main.79410254.chunk.js" />
+    <None Include="wwwroot\static\js\main.79410254.chunk.js.map" />
+    <None Include="wwwroot\static\js\main.bb7094e6.chunk.js" />
+    <None Include="wwwroot\static\js\main.bb7094e6.chunk.js.map" />
+    <None Include="wwwroot\static\js\main.bf9ba6c7.chunk.js" />
+    <None Include="wwwroot\static\js\main.bf9ba6c7.chunk.js.map" />
+    <None Include="wwwroot\static\js\main.c3eaa63b.chunk.js" />
+    <None Include="wwwroot\static\js\main.c3eaa63b.chunk.js.map" />
+    <None Include="wwwroot\static\js\main.d366ec4c.chunk.js" />
+    <None Include="wwwroot\static\js\main.d366ec4c.chunk.js.map" />
+    <None Include="wwwroot\static\js\main.e61802a2.chunk.js" />
+    <None Include="wwwroot\static\js\main.e61802a2.chunk.js.map" />
+    <None Include="wwwroot\static\js\main.fb4a1e11.chunk.js" />
+    <None Include="wwwroot\static\js\main.fb4a1e11.chunk.js.map" />
+    <None Include="wwwroot\static\js\runtime~main.a8a9905a.js" />
+    <None Include="wwwroot\static\js\runtime~main.a8a9905a.js.map" />
+    <None Include="wwwroot\static\media\double_tick_icon.7319bcfe.svg" />
+    <None Include="wwwroot\static\media\lock_icon.bcc89e52.svg" />
+    <None Include="wwwroot\static\media\paperclip_icon.b4a5561e.svg" />
+    <None Include="wwwroot\static\media\send_button_icon.56dc055f.svg" />
+    <None Include="wwwroot\static\media\SFProDisplay-Black.051e4d91.woff2" />
+    <None Include="wwwroot\static\media\SFProDisplay-BlackItalic.118eb0dd.woff2" />
+    <None Include="wwwroot\static\media\SFProDisplay-Bold.33802914.woff2" />
+    <None Include="wwwroot\static\media\SFProDisplay-BoldItalic.2edb52e3.woff2" />
+    <None Include="wwwroot\static\media\SFProDisplay-Heavy.fee26660.woff2" />
+    <None Include="wwwroot\static\media\SFProDisplay-HeavyItalic.81fa0353.woff2" />
+    <None Include="wwwroot\static\media\SFProDisplay-Light.0229ea63.woff2" />
+    <None Include="wwwroot\static\media\SFProDisplay-LightItalic.24eb4d29.woff2" />
+    <None Include="wwwroot\static\media\SFProDisplay-Medium.52ea0d70.woff2" />
+    <None Include="wwwroot\static\media\SFProDisplay-MediumItalic.8047adc9.woff2" />
+    <None Include="wwwroot\static\media\SFProDisplay-Regular.abe60269.woff2" />
+    <None Include="wwwroot\static\media\SFProDisplay-RegularItalic.2d0b4551.woff2" />
+    <None Include="wwwroot\static\media\SFProDisplay-Semibold.af64ab08.woff2" />
+    <None Include="wwwroot\static\media\SFProDisplay-SemiboldItalic.170a61af.woff2" />
+    <None Include="wwwroot\static\media\SFProDisplay-Thin.16e844ac.woff2" />
+    <None Include="wwwroot\static\media\SFProDisplay-ThinItalic.c77d26c8.woff2" />
+    <None Include="wwwroot\static\media\SFProDisplay-Ultralight.a01866ed.woff2" />
+    <None Include="wwwroot\static\media\SFProDisplay-UltralightItalic.2910a3bd.woff2" />
+    <None Include="wwwroot\static\media\tick_icon.06277842.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="ObjectsLibrary">
+      <HintPath>Lib\ObjectsLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="YSecurity">
+      <HintPath>Lib\YSecurity.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties config_4appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+</Project>

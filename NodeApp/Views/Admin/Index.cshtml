@@ -1,0 +1,60 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model List<NodeApp.Areas.Identity.Models.AdminUser>
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div id="editModal" class="modal fade">
+        <div id="editContent" class="modal-body"></div>
+    </div>
+    <table class="table">
+        <thead class="head">
+            <tr>
+                <th>@Localizer["Id"]</th>
+                <th>@Localizer["UserName"]</th>
+                <th>@Localizer["Email"]</th>
+                <th>@Localizer["Phone"]</th>
+                <th>@Localizer["Banned"]</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.UserName</td>
+                    <td>@user.Email</td>
+                    <td>@user.PhoneNumber</td>
+                    <td>@Html.CheckBox("string", user.Banned, htmlAttributes: new { @readonly = true })</td>
+                    <td>
+                        @Html.ActionLink(Localizer["Edit"].Value, "Edit", "Admin", new { id = user.Id }, htmlAttributes: new { @class = "edit" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @section scripts
+    {
+        <script type="text/javascript">
+            $(function () {
+                $.ajaxSetup({ cache: false });
+                $(".edit").click(function (e) {
+                    e.preventDefault();
+                    $.get(this.href, function (data) {
+                        $('#editContent').html(data);
+                        $('#editModal').modal('show');
+                    })
+                });
+            })
+        </script>
+    }
+</body>
+</html>

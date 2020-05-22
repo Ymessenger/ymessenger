@@ -1,0 +1,27 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model LogViewModel
+@{
+    ViewData["Title"] = $"{Localizer["Title"]} {Model.LogName}";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <label style="font: bold 16px">@Localizer["FileName"]</label>
+    <label>@Model.LogName</label>
+    <label style="font: bold 16px">@Localizer["LastTime"]</label>
+    <label>@Model.Time</label>
+    <label style="font: bold 16px">@Localizer["Size"]</label>
+    <label>@Model.Size</label>
+    <label style="font: bold 16px">@Localizer["Content"]</label>
+    <div>
+        <p>
+            @Model.Text
+        </p>
+    </div>
+</body>
+</html>

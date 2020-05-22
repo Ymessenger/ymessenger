@@ -1,0 +1,138 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+@model NodeApp.HttpServer.Models.ViewModels.UsersViewModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <script type="text/javascript" src="~/lib/bignumber.min.js"></script>
+    <script type="text/javascript" src="~/lib/json-bigint/lib/parse.js"></script>
+    <script type="text/javascript" src="~/lib/json-bigint/lib/stringify.js"></script>
+    <script type="text/javascript" src="~/admin-api-functions.js"></script>
+    <ul class="nav nav-pills nav-fill" id="userstab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="confirmed-tab" data-toggle="tab" role="tab" aria-controls="confirmed" aria-selected="true" href="#confirmed">@Localizer["Confirmed"]</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="unconfirmed-tab" data-toggle="tab" role="tab" aria-controls="unconfirmed" aria-selected="false" href="#unconfirmed">@Localizer["Unconfirmed"]</a>
+        </li>
+    </ul>
+    @Html.ActionLink(Localizer["AddUser"].Value, "Create", "Users", new { }, new { @class = "create" })
+    <div id="createUserModal" class="modal fade">
+        <div id="createUserContent" class="modal-body"></div>
+    </div>
+    <div id="createQRModal" class="modal fade">
+        <div id="createQRContent" class="modal-body"></div>
+    </div>
+    <div id="modDialog" class="modal fade">
+        <div id="dialogContent" class="modal-body"></div>
+    </div>
+    <div id="getConversationsModal" class="modal fade">
+        <div id="getConversationsContent" class="modal-body"></div>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane fade show active" aria-labelledby="confirmed-tab" role="tabpanel" id="confirmed">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>@Localizer["Id"]</th>
+                        <th>@Localizer["Name"]</th>
+                        <th>@Localizer["Tag"]</th>
+                        <th>@Localizer["Email"]</th>
+                        <th>@Localizer["Phone"]</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model.ConfirmedUsers)
+                    {
+                        <tr>
+                            <th>@user.Id</th>
+                            <td>@($"{user.NameFirst} {user.NameSecond}")</td>
+                            <td>@user.Tag</td>
+                            <td>@user.Emails.FirstOrDefault()</td>
+                            <td>@user.Phones.FirstOrDefault()?.FullNumber</td>
+                            <td>
+                                @Html.ActionLink(Localizer["Details"].Value, "Details", "Users", new { userId = user.Id.GetValueOrDefault() }, new { @class = "user" })
+                                @Html.ActionLink(Localizer["CreateQR"].Value, "CreateQR", "Users", new { userId = user.Id.GetValueOrDefault() }, new { @class = "qr-code" })
+                                @Html.ActionLink(Localizer["Messages"].Value, "Conversations", "Users", new { userId = user.Id.GetValueOrDefault() }, new { @class = "conversations" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" aria-labelledby="unconfirmed-tab" role="tabpanel" id="unconfirmed">
+            <table class="table">
+                <thead>
+                    <tr>
+                       <th>@Localizer["Id"]</th>
+                        <th>@Localizer["Name"]</th>
+                        <th>@Localizer["Tag"]</th>
+                        <th>@Localizer["Email"]</th>
+                        <th>@Localizer["Phone"]</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model.UnconfirmedUsers)
+                    {
+                        <tr>
+                            <th>@user.Id</th>
+                            <td>@($"{user.NameFirst} {user.NameSecond}")</td>
+                            <td>@user.Tag</td>
+                            <td>@user.Emails.FirstOrDefault()</td>
+                            <td>@user.Phones.FirstOrDefault()?.FullNumber</td>
+                            <td>
+                                @Html.ActionLink(Localizer["Details"].Value, "Details", "Users", new { userId = user.Id.GetValueOrDefault() }, new { @class = "user" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    @section scripts
+    {
+        <script type="text/javascript">
+            $(function () {
+                $.ajaxSetup({ cache: false });
+                $(".user").click(function (e) {
+                    e.preventDefault();
+                    $.get(this.href, function (data) {
+                        $('#dialogContent').html(data);
+                        $('#modDialog').modal('show');
+                    });
+                });
+                $(".create").click(function (e) {
+                    e.preventDefault();
+                    $.get(this.href, function (data) {
+                        $('#createUserContent').html(data);
+                        $('#createUserModal').modal('show');
+                    });
+                });
+                $(".qr-code").click(function (e) {
+                    e.preventDefault();
+                    $.get(this.href, function (data) {
+                        $('#createQRContent').html(data);
+                        $('#createQRModal').modal('show');
+                    });
+                });
+                $(".conversations").click(function (e) {
+                    e.preventDefault();
+                    $.get(this.href, function (data) {
+                        $('#getConversationsContent').html(data);
+                        $('#getConversationsModal').modal('show');
+                    });
+                });
+            })
+        </script>
+    }
+</body>
+</html>

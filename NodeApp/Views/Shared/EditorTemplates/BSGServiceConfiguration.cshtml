@@ -1,0 +1,22 @@
+﻿@model NodeApp.Objects.SettingsObjects.SmsServicesConfiguration.BSGServiceConfiguration
+@using static NodeApp.Objects.SettingsObjects.SmsServicesConfiguration.SmsServiceTypes
+<div class="form-group">
+    <label asp-for="ServiceName" class="control-label"></label>
+    <input asp-for="ServiceName" class="form-control" value="@BSG" readonly />
+    <span asp-validation-for="ServiceName" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="ServiceUrl" class="control-label"></label>
+    <input asp-for="ServiceUrl" class="form-control" />
+    <span asp-validation-for="ServiceUrl" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="ApiKey" class="control-label"></label>
+    <input asp-for="ApiKey" class="form-control" />
+    <span asp-validation-for="ApiKey" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="SenderName" class="control-label"></label>
+    <input asp-for="SenderName" class="form-control" />
+    <span asp-validation-for="SenderName" class="text-danger"></span>
+</div>

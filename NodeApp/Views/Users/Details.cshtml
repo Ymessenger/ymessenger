@@ -1,0 +1,113 @@
+﻿@using NodeApp
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model ObjectsLibrary.ViewModels.UserVm
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
+        </div>
+        <div class="modal-body">
+            <div class="card">
+                <h1 class="card-header">
+                    @($"{Model.NameFirst} {Model.NameSecond}")
+                </h1>
+                @if (!string.IsNullOrWhiteSpace(Model.Photo))
+                {
+                    <img class="card-img-top" src="@($"https://{NodeSettings.Configs.Node.Domains.FirstOrDefault()}:{NodeSettings.Configs.Node.ClientsPort}/api/Files/{Model.Photo}")" style="max-width: 35%; height:auto">
+                }
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-5">
+                            @Localizer["Id"]
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.Id)
+                        </dd>
+                        @if (Model.Phones != null && Model.Phones.Any())
+                        {
+                    <dt class="col-sm-5">
+                        @Localizer["Phone"]
+                    </dt>
+                            <dd class="col-sm-7">
+                                @Model.Phones.FirstOrDefault().FullNumber
+                            </dd>
+                        }
+                        @if (Model.Emails != null && Model.Emails.Any())
+                        {
+                    <dt class="col-sm-5">
+                        @Localizer["Email"]
+                    </dt>
+                            <dd class="col-sm-7">
+                                @Html.DisplayFor(model => model.Emails)
+                            </dd>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.About))
+                        {
+                    <dt class="col-sm-5">
+                        @Localizer["About"]
+                    </dt>
+                            <dd class="col-sm-7">
+                                @Html.DisplayFor(model => model.About)
+                            </dd>
+                        }
+                        @if (Model.Birthday.HasValue)
+                        {
+                    <dt class="col-sm-5">
+                        @Localizer["Birthday"]
+                    </dt>
+                            <dd class="col-sm-7">
+                                @Html.DisplayFor(model => model.Birthday)
+                            </dd>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(Model.Tag))
+                        {
+                    <dt class="col-sm-5">
+                        @Localizer["Tag"]
+                    </dt>
+                            <dd class="col-sm-7">
+                                @Html.DisplayFor(model => model.Tag)
+                            </dd>
+                        }
+                        @if (Model.Online.HasValue)
+                        {
+                    <dt class="col-sm-5">
+                        @Localizer["Online"]
+                    </dt>
+                            <dd class="col-sm-7">
+                                @Model.Online.Value.ToDateTime()
+                            </dd>
+                        }
+                        @if (Model.RegistrationDate.HasValue)
+                        {
+                    <dt class="col-sm-5">
+                        @Localizer["Registration"]
+                    </dt>
+                            <dd class="col-sm-7">
+                                @Model.RegistrationDate.Value.ToDateTime()
+                            </dd>
+                        }
+                    <dt class="col-sm-5">
+                        @Localizer["Confirmed"]
+                    </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.Confirmed)
+                        </dd>
+                        <dt class="col-sm-5">
+                            @Localizer["Banned"]
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.Banned)
+                        </dd>
+                    </dl>
+                    @if (!Model.Confirmed)
+                    {
+                        @Html.ActionLink(Localizer["Confirm"].Value, "Confirm", "Users", new { userId = Model.Id });
+                    }
+                    <a href="#" id="ban-user" onclick="banUser_click(new BigNumber(@(Html.Raw($"'{Model.ToString()}'"))));">@(Model.Banned ? Localizer["Unban"].Value : Localizer["Ban"].Value)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

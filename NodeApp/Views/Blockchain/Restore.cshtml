@@ -1,0 +1,32 @@
+﻿@model NodeApp.HttpServer.Models.BlockchainRestoreModel
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <form asp-action="Restore">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Start" class="control-label"></label>
+                            <input asp-for="Start" class="form-control" />
+                            <span asp-validation-for="Start" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="End" class="control-label"></label>
+                            <input asp-for="End" class="form-control" />
+                            <span asp-validation-for="End" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Восстановить" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

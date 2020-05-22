@@ -1,0 +1,73 @@
+version: '3.5'
+
+services:
+
+  web:
+    container_name: 'ymessenger_node'
+    image: 'index.docker.io/ilyaild/ymessenger_node'
+    restart: always
+    build:
+      context: .
+      dockerfile: ymessenger_node.dockerfile
+    volumes:      
+      - /ymessenger-data:/app/Config
+      - /ymessenger-data/LocalFileStorage:/app/LocalFileStorage
+      - /usr/bin/docker:/usr/bin/docker
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+     - "5000:5000"
+     - "5001:5001"
+     - "5002:5002" 
+     - "443:443"    
+     - "80:80"
+    deploy:
+     resources:
+      limits:
+       memory: 512m
+    depends_on:
+     - "postgres"
+     - "redis"
+    networks:
+      - ymessenger-network
+    labels:
+       com.centurylinklabs.watchtower.enable: "true"  
+
+  postgres:
+    container_name: 'postgres'
+    image: postgres:11
+    restart: always
+    environment:      
+      POSTGRES_PASSWORD: default_ymess_password
+      POSTGRES_USER: postgres   
+    ports:
+     - "10234:5432"    
+    volumes:
+      - /db-data:/var/lib/postgresql/data
+    networks:
+      - ymessenger-network      
+  redis:
+    image: redis
+    container_name: 'redis'
+    restart: always
+    volumes:
+    - /etc/redis/:/data redis redis-server /data  
+    networks:
+     - ymessenger-network
+     
+  watchtower:
+    image: containrrr/watchtower
+    container_name: 'watchtower'
+    ports:
+      - "3443:3443"
+      - "3080:3080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /root/.docker/config.json:/config.json
+    command: --interval 60 --label-enable
+    networks:
+      - ymessenger-network
+
+networks:
+  ymessenger-network:
+    driver: bridge
+    name: ymessenger-network

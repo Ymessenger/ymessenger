@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+@model List<LogViewModel>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />    
+</head>
+<body>
+    @Html.ActionLink(Localizer["DeleteAll"].Value, "Delete", "Logs", new { deteleAll = (bool?) true })
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Localizer["FileName"]</th>
+                <th>@Localizer["LastTime"]</th>
+                <th>@Localizer["Size"]</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(@item.LogName, "Details", "Logs", new { logname = @item.LogName })</td>
+                    <td>@item.Time</td>
+                    <td>@item.Size</td>
+                    <td>@Html.ActionLink(Localizer["Delete"].Value, "Delete", "Logs", new { logname = item.LogName })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

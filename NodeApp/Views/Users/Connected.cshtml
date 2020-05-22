@@ -1,0 +1,48 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+@model ConnectedUsersViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />    
+</head>
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Localizer["Id"]</th>
+                <th>@Localizer["Ip"]</th>
+                <th>@Localizer["IsEncrypted"]</th>
+                <th>@Localizer["Key"]</th>
+                <th>@Localizer["IsProxied"]</th>
+                <th>@Localizer["Firebase"]</th>
+                <th>@Localizer["Actions"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var connection in Model.ConnectedUsers)
+            {
+                <tr>
+                    <td>@connection.UserId</td>
+                    <td>@($"{connection.ClientIP}:{connection.ClientPort}")</td>
+                    <td>@Html.CheckBox("string", connection.IsEncryptedConnection, htmlAttributes: new { @readonly = true })</td>
+                    <td>
+                        @if (connection.IsEncryptedConnection)
+                        {
+                            <span>@Convert.ToBase64String(connection.SymmetricKey)</span>
+                        }
+                    </td>
+                    <td>@Html.CheckBox("string", connection.IsProxiedClientConnection, htmlAttributes: new { @readonly = true })</td>
+                    <td>@connection.CurrentDeviceTokenId</td>
+                    <td>@Html.ActionLink(Localizer["Disconnect"].Value, "Disconnect", "Users", new { sessionId = connection.CurrentToken?.Id, userId = connection.UserId.GetValueOrDefault() })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

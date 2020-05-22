@@ -1,0 +1,489 @@
+﻿@model NodeApp.HttpServer.Models.ConfigsModel
+@using ObjectsLibrary.ViewModels
+@using ObjectsLibrary.Enums
+@using NodeApp.Extensions
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+<div id="keysModal" class="modal fade" tabindex="-1" role="dialog">
+    <div id="keysContent" class="modal-body"></div>
+</div>
+<div id="passwordModal" class="modal fade" tabindex="-1" role="dialog">
+    <div id="passwordContent" class="modal-body"></div>
+</div>
+<div id="restoreModal" class="modal fade" tabindex="-1" role="dialog">
+    <div id="restoreContent" class="modal-body"></div>
+</div>
+<form asp-action="Update" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-5">
+            <div class="nav flex-column nav-pills" id="configs-options" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="node-info-tab" data-toggle="pill" href="#node-info" role="tab" aria-controls="node-info" aria-selected="true">@Localizer["NodeInformation"]</a>
+                <a class="nav-link" id="connections-info-tab" data-toggle="pill" href="#connections-info" role="tab" aria-controls="connections-info" aria-selected="false">@Localizer["ConnectionsParameters"]</a>
+                <a class="nav-link" id="db-info-tab" data-toggle="pill" href="#db-info" role="tab" aria-controls="db-info" aria-selected="false">@Localizer["DatabasesOptions"]</a>
+                <a class="nav-link" id="password-info-tab" data-toggle="pill" href="#password-info" role="tab" aria-controls="password-info" aria-selected="false">@Localizer["PasswordSecurity"]</a>
+                
+                <a class="nav-link" id="s3-info-tab" data-toggle="pill" href="#s3-info" role="tab" aria-controls="s3-info" aria-selected="false">@Localizer["S3"]</a>
+                <a class="nav-link" id="sms-info-tab" data-toggle="pill" href="#sms-info" role="tab" aria-controls="sms-info" aria-selected="false">@Localizer["SMS"]</a>
+                <a class="nav-link" id="smtp-info-tab" data-toggle="pill" href="#smtp-info" role="tab" aria-controls="smtp-info" aria-selected="false">@Localizer["Email"]</a>
+                <a class="nav-link" id="keys-info-tab" data-toggle="pill" href="#keys-info" role="tab" aria-controls="keys-info" aria-selected="false">@Localizer["Keys"]</a>
+                <a class="nav-link" id="license-info-tab" data-toggle="pill" href="#license-info" role="tab" aria-controls="license-info" aria-selected="false">@Localizer["License"]</a>
+
+                @if (Model.RecoveryMode)
+                {
+                    <a class="nav-link" id="blockchain-recovery-tab" data-toggle="pill" href="#blockchain-recovery" aria-controls="blockchain-recovery" aria-selected="false">@Localizer["Blockchain"]</a>
+                }
+                <hr />
+                <div class="row">
+                    <div class="form-group">
+                        <input type="submit" value="@Localizer["Save"]" class="btn btn-primary" />
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-primary" asp-controller="Configuration" style="background-color:red; border-color:red">@Localizer["Cancel"]</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-7">
+            @if (Model.ErrorModel?.Errors.IsNullOrEmpty() == false)
+            {
+                foreach (var error in Model.ErrorModel.Errors)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        <h4 class="alert-heading">@error.Key</h4>
+                        <p>@error.Value</p>
+                    </div>
+                }
+            }
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="node-info" role="tabpanel" aria-labelledby="node-info-tab">
+                    @if (Model.Node != null)
+                    {
+                        <div class="form-group">
+                            @if (!string.IsNullOrWhiteSpace(Model.Node.Photo))
+                            {
+                                <img src="@($"https://{Model.Node.Domains.FirstOrDefault()}:{NodeApp.NodeSettings.Configs.Node.ClientsPort}/api/Files/{Model.Node.Photo}")" style="max-height:300px; width:auto" />
+                            }
+                            <input type="file" asp-for="NodeImage" class="form-control-file" />
+                            <span asp-validation-for="NodeImage" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">@Localizer["NodeName"]</label>
+                            <input asp-for="Node.Name" class="form-control" />
+                            <span asp-validation-for="Node.Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <dl class="row">
+                                <dt class="col-3">
+                                    @Localizer["NodeTag"]
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Node.Tag)
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">@Localizer["NodeAbout"]</label>
+                            <textarea asp-for="Node.About" class="form-control"></textarea>
+                            <span asp-validation-for="Node.About" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">@Localizer["SupportEmail"]</label>
+                            <input asp-for="Node.SupportEmail" class="form-control"></input>
+                            <span asp-validation-for="Node.SupportEmail" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class=" control-label">@Localizer["AdminEmail"]</label>
+                            <input asp-for="Node.AdminEmail" class="form-control"></input>
+                            <span asp-validation-for="Node.AdminEmail" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <dl class="row">
+                                <dt class="col-3">
+                                    @Localizer["NodeStartDay"]
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Node.StartDay)
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="Node.Visible" /> @Localizer["NodeVisible"]
+                            </label>
+                        </div>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="Node.Storage" /> @Localizer["NodeStorage"]
+                            </label>
+                        </div>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="Node.Routing" /> @Localizer["NodeRouting"]
+                            </label>
+                        </div>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="Node.PermanentlyDeleting" /> @Localizer["NodePermanentlyDeleting"]
+                            </label>
+                        </div>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="Node.UserRegistrationAllowed" /> @Localizer["UserRegistrationAllowed"]
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <select class="list-group" asp-for="Node.EncryptionType">
+                                <option disabled selected="selected" value="">@Localizer["Select"]</option>
+                                <option value="@EncryptionType.Allowed">@Localizer["EncryptionType.Allowed"]</option>
+                                <option value="@EncryptionType.NodeUsersForbidden">@Localizer["EncryptionType.NodeUsersForbidden"]</option>
+                                <option value="@EncryptionType.TotallyForbidden">@Localizer["EncryptionType.TotallyForbidden"]</option>
+                            </select>
+                             
+                        </div>
+                        <div class="form-group">
+                            <select class="list-group" asp-for="Node.RegistrationMethod">
+                                <option disabled selected="selected" value="">@Localizer["Select"]</option>
+                                <option value="@RegistrationMethod.EmailRequired">@Localizer["RegistrationMethod.EmailRequired"]</option>
+                                <option value="@RegistrationMethod.PhoneRequired">@Localizer["RegistrationMethod.PhoneRequired"]</option>
+                                <option value="@RegistrationMethod.NothingRequired">@Localizer["RegistrationMethod.NothingRequired"]</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            @Html.DropDownListFor(model => model.Node.Country, new SelectList(Model.ContriesISO, "Key", "Value"), @Localizer["SelectCountry"].Value, new { @class = "form-control" })
+                        </div>
+                    }
+                </div>
+                <div class="tab-pane fade" id="connections-info" role="tabpanel" aria-labelledby="connections-info-tab">
+                    <div class="form-group">
+                        <label class="control-label">@Localizer["ClientsPort"]</label>
+                        <input type="number" asp-for="ClientsPort" class="form-control" />
+                        <span asp-validation-for="ClientsPort" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">@Localizer["NodesPort"]</label>
+                        <input type="number" asp-for="NodesPort" class="form-control" />
+                        <span asp-validation-for="NodesPort" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">@Localizer["LicensorUrl"]</label>
+                        <input asp-for="LicensorUrl" class="form-control" />
+                        <span asp-validation-for="LicensorUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">@Localizer["PushServerUrl"]</label>
+                        <input asp-for="NotificationServerURL" class="form-control" />
+                        <span asp-validation-for="NotificationServerURL" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="db-info" role="tabpanel" aria-labelledby="db-info-tab">
+                    @if (Model.MessengerDbConnection != null)
+                    {
+                        <h6>@Localizer["MessengerDatabaseOptions"]</h6>
+                        <div class="form-group">
+                            <label asp-for="MessengerDbConnection.Host" class="control-label"></label>
+                            <input asp-for="MessengerDbConnection.Host" class="form-control" />
+                            <span asp-validation-for="MessengerDbConnection.Host" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MessengerDbConnection.Port" class="control-label"></label>
+                            <input type="number" asp-for="MessengerDbConnection.Port" class="form-control" />
+                            <span asp-validation-for="MessengerDbConnection.Port" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MessengerDbConnection.Database" class="control-label"></label>
+                            <input asp-for="MessengerDbConnection.Database" class="form-control" />
+                            <span asp-validation-for="MessengerDbConnection.Database" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MessengerDbConnection.Username" class="control-label"></label>
+                            <input asp-for="MessengerDbConnection.Username" class="form-control" />
+                            <span asp-validation-for="MessengerDbConnection.Username" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MessengerDbConnection.Password" class="control-label"></label>
+                            <input asp-for="MessengerDbConnection.Password" class="form-control" />
+                            <span asp-validation-for="MessengerDbConnection.Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">@Localizer["MaxDbBackups"]</label>
+                            <input asp-for="MaxDbBackups" class="form-control" />
+                            <span asp-validation-for="MaxDbBackups" class="text-danger"></span>
+                        </div>
+                        <hr />
+                    }
+                    @if (Model.BlockchainDbConnection != null)
+                    {
+                <h6>@Localizer["BlockchainDatabaseOptions"]</h6>
+                        <div class="form-group">
+                            <label asp-for="BlockchainDbConnection.Host" class="control-label"></label>
+                            <input asp-for="BlockchainDbConnection.Host" class="form-control" />
+                            <span asp-validation-for="BlockchainDbConnection.Host" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="BlockchainDbConnection.Port" class="control-label"></label>
+                            <input type="number" asp-for="BlockchainDbConnection.Port" class="form-control" />
+                            <span asp-validation-for="BlockchainDbConnection.Port" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="BlockchainDbConnection.Database" class="control-label"></label>
+                            <input asp-for="BlockchainDbConnection.Database" class="form-control" />
+                            <span asp-validation-for="BlockchainDbConnection.Database" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="BlockchainDbConnection.Username" class="control-label"></label>
+                            <input asp-for="BlockchainDbConnection.Username" class="form-control" />
+                            <span asp-validation-for="BlockchainDbConnection.Username" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="BlockchainDbConnection.Password" class="control-label"></label>
+                            <input asp-for="BlockchainDbConnection.Password" class="form-control" />
+                            <span asp-validation-for="BlockchainDbConnection.Password" class="text-danger"></span>
+                        </div>
+                        <hr />
+                    }
+                    @if (Model.CacheServerConnection != null)
+                    {
+                <h6>@Localizer["RedisServerOptions"]</h6>
+                        <div class="form-group">
+                            <label asp-for="CacheServerConnection.Host" class="control-label"></label>
+                            <input asp-for="CacheServerConnection.Host" class="form-control" />
+                            <span asp-validation-for="CacheServerConnection.Host" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CacheServerConnection.Port" class="control-label"></label>
+                            <input asp-for="CacheServerConnection.Port" class="form-control" />
+                            <span asp-validation-for="CacheServerConnection.Port" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CacheServerConnection.Password" class="control-label"></label>
+                            <input asp-for="CacheServerConnection.Password" class="form-control" />
+                            <span asp-validation-for="CacheServerConnection.Password" class="text-danger"></span>
+                        </div>
+                    }
+                </div>
+                <div class="tab-pane fade" id="password-info" role="tabpanel" aria-labelledby="password-info-tab">
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="AllowedRegistration" /> @Localizer["AllowedRegistration"]
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="ConfirmUsers" /> @Localizer["ConfirmUsers"]
+                        </label>
+                    </div>
+                    <div>
+                        @Html.ActionLink(@Localizer["ChangePassword"].Value, "ChangePassword", "Configuration", htmlAttributes: new { @class = "password btn btn-primary" })
+                    </div>
+                </div>                
+                <div class="tab-pane fade" id="s3-info" role="tabpanel" aria-labelledby="s3-info-tab">
+                    @if (Model.S3FileStorageOptions == null)
+                    {
+                        Model.S3FileStorageOptions = new NodeApp.Objects.SettingsObjects.S3FileStorageOptions();
+                    }
+                    <div class="form-group">
+                        <label asp-for="S3FileStorageOptions.AccessKey" class="control-label"></label>
+                        <input asp-for="S3FileStorageOptions.AccessKey" class="form-control" />
+                        <span asp-validation-for="S3FileStorageOptions.AccessKey" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="S3FileStorageOptions.SecretKey" class="control-label"></label>
+                        <input asp-for="S3FileStorageOptions.SecretKey" class="form-control" />
+                        <span asp-validation-for="S3FileStorageOptions.SecretKey" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="S3FileStorageOptions.BucketName" class="control-label"></label>
+                        <input asp-for="S3FileStorageOptions.BucketName" class="form-control" />
+                        <span asp-validation-for="S3FileStorageOptions.BucketName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="S3FileStorageOptions.Region" class="control-label"></label>
+                        <input asp-for="S3FileStorageOptions.Region" class="form-control" />
+                        <span asp-validation-for="S3FileStorageOptions.Region" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="S3FileStorageOptions.EndPoint" class="control-label"></label>
+                        <input asp-for="S3FileStorageOptions.EndPoint" class="form-control" />
+                        <span asp-validation-for="S3FileStorageOptions.EndPoint" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="sms-info" role="tabpanel" aria-labelledby="sms-info-tab">
+                    <div class="nav nav-pills" id="sms-configs" role="tablist" aria-orientation="horizontal">
+                        <a class="nav-link active" id="current-info-tab" data-toggle="pill" href="#current-info" role="tab" aria-controls="current-info" aria-selected="true">@Localizer["CurrentSMS"]</a>
+                        <a class="nav-link" id="bsg-info-tab" data-toggle="pill" href="#bsg-info" role="tab" aria-controls="bsg-info" aria-selected="false">BSG</a>
+                        <a class="nav-link" id="sms-intel-info-tab" data-toggle="pill" href="#sms-intel-info" role="tab" aria-controls="sms-intel-info" aria-selected="false">SMSIntel</a>
+                        <a class="nav-link" id="smsru-info-tab" data-toggle="pill" href="#smsru-info" role="tab" aria-controls="smsru-info" aria-selected="false">SMSRU</a>
+                        <a class="nav-link" id="golos-aloha-info-tab" data-toggle="pill" href="#golos-aloha-info" role="tab" aria-controls="golos-aloha-info" aria-selected="false">GolosAloha</a>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="current-info" role="tabpanel" aria-labelledby="current-info-tab">
+                            @if (Model.BSGServiceConfiguration.IsValid())
+                            {
+                                <div>@Html.EditorFor(model => model.BSGServiceConfiguration, "BSGServiceConfiguration")</div>
+                            }
+                            else if (Model.SMSIntelServiceConfiguration.IsValid())
+                            {
+                                <div>@Html.EditorFor(model => model.SMSIntelServiceConfiguration, "SMSIntelServiceConfiguration")</div>
+                            }
+                            else if (Model.SMSRUServiceConfiguration.IsValid())
+                            {
+                                <div>@Html.EditorFor(model => model.SMSRUServiceConfiguration, "SMSRUServiceConfiguration")</div>
+                            }
+                            else if (Model.GolosAlohaServiceConfiguration.IsValid())
+                            {
+                                <div>@Html.EditorFor(model => model.GolosAlohaServiceConfiguration, "VoiceServiceConfiguration")</div>
+                            }
+                        </div>
+                        <div class="tab-pane fade" id="bsg-info" role="tabpanel" aria-labelledby="bsg-info-tab">
+                            @Html.EditorFor(model => model.BSGServiceConfiguration, "BSGServiceConfiguration")
+                        </div>
+                        <div class="tab-pane fade" id="sms-intel-info" role="tabpanel" aria-labelledby="sms-intel-info-tab">
+                            @Html.EditorFor(model => model.SMSIntelServiceConfiguration, "SMSIntelServiceConfiguration")
+                        </div>
+                        <div class="tab-pane fade" id="smsru-info" role="tabpanel" aria-labelledby="smsru-info-tab">
+                            @Html.EditorFor(model => model.SMSRUServiceConfiguration, "SMSRUServiceConfiguration")
+                        </div>
+                        <div class="tab-pane fade" id="golos-aloha-info" role="tabpanel" aria-labelledby="golos-aloha-info-tab">
+                            @Html.EditorFor(model => model.GolosAlohaServiceConfiguration, "VoiceServiceConfiguration")
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="smtp-info" role="tabpanel" aria-labelledby="smtp-info-tab">
+                    @if (Model.SmtpClient != null)
+                    {
+                        <div class="form-group">
+                            <label asp-for="SmtpClient.Host" class="control-label"></label>
+                            <input asp-for="SmtpClient.Host" class="form-control" />
+                            <span asp-validation-for="SmtpClient.Host" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SmtpClient.Port" class="control-label"></label>
+                            <input asp-for="SmtpClient.Port" class="form-control" />
+                            <span asp-validation-for="SmtpClient.Port" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SmtpClient.Email" class="control-label"></label>
+                            <input asp-for="SmtpClient.Email" class="form-control" />
+                            <span asp-validation-for="SmtpClient.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SmtpClient.Password" class="control-label"></label>
+                            <input asp-for="SmtpClient.Password" class="form-control" />
+                            <span asp-validation-for="SmtpClient.Password" class="text-danger"></span>
+                        </div>
+                    }
+                </div>
+                <div class="tab-pane fade" id="keys-info" role="tabpanel" aria-labelledby="keys-info-tab">
+                    @if (Model.NodeKeys != null)
+                    {
+                        <div>
+                            <h6 class="h6">@Localizer["KeysId"]</h6>
+                            @Html.DisplayFor(model => model.NodeKeys.KeyId)
+                        </div>
+                        <hr />
+                        <div>
+                            <h6 class="h6">@Localizer["KeysCreatedAt"]</h6>
+                            @Model.NodeKeys.GenerationTime.ToDateTime() UTC
+                        </div>
+                        <hr />
+                        <div>
+                            <h6 class="h6">@Localizer["KeysExpiredAt"]</h6>
+                            @Model.NodeKeys.ExpirationTime.ToDateTime() UTC
+                        </div>
+                        <hr />
+                        <div>
+                            @Html.ActionLink(Localizer["NewKeys"].Value, "CreateKeys", "Confirguration", htmlAttributes: new { @class = "btn btn-primary keys" })
+                        </div>
+                    }
+                </div>
+                <div class="tab-pane fade" id="license-info" role="tabpanel" aria-labelledby="license-info-tab">
+                    @if (Model.License != null)
+                    {
+                        <div>
+                            <h6 class="h6">@Localizer["LicenseCreatedAt"]</h6>
+                            @Model.License.StartAt.Value.ToDateTime() UTC
+                        </div>
+                        <hr />
+                        <div>
+                            <h6 class="h6">@Localizer["LicenseExpiredAt"]</h6>
+                            @Model.License.ExpiredAt.Value.ToDateTime() UTC
+                        </div>
+                        <hr />
+                        <div>
+                            <h6 class="h6">@Localizer["LicenseTariff"]</h6>
+                            @Model.License.Tariff.Title
+                        </div>
+                        <hr />
+                        <div>
+                            <h6 class="h6">@Localizer["LicenseCost"]</h6>
+                            @Model.License.Tariff.Price
+                        </div>
+                    }
+                </div>
+
+                <div class="tab-pane fade" id="blockchain-recovery" role="tabpanel" aria-labelledby="blockchain-recovery-tab">
+                    @if (Model.RecoveryMode)
+                    {
+                        <div>
+                            <h6 class="h6">@Localizer["BlockchainBlocksCount"]</h6>
+                            @Html.DisplayFor(model => model.BlockchainInfo.Count)
+                        </div>
+                        <hr />
+                        <div>
+                            <h6 class="h6">@Localizer["FirstBlockCreatedAt"]</h6>
+                            @Html.DisplayFor(model => model.BlockchainInfo.FirstBlockTime)
+                        </div>
+                        <hr />
+                        <div>
+                            <h6 class="h6">@Localizer["LastBlockCreatedAt"]</h6>
+                            @Html.DisplayFor(model => model.BlockchainInfo.LastBlockTime)
+                        </div>
+                        <hr />
+                        @Html.ActionLink(
+                                 Localizer["BlockchainRecovery"].Value,
+                                 "Restore",
+                                 "Blockchain",
+                                 null,
+                                 htmlAttributes: new
+                                 {
+                                     @class = "btn btn-primary restore"
+                                 })
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section scripts
+    {
+    <script type="text/javascript">
+        $(function () {
+            $.ajaxSetup({ cache: false });
+            $(".keys").click(function (e) {
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#keysContent').html(data);
+                    $('#keysModal').modal('show');
+                })
+            });
+            $(".password").click(function (e) {
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#passwordContent').html(data);
+                    $('#passwordModal').modal('show');
+                })
+            });
+            $(".restore").click(function (e) {
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#restoreContent').html(data);
+                    $('#restoreModal').modal('show');
+                })
+            });
+        })
+    </script>
+}

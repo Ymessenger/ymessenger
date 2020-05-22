@@ -1,0 +1,34 @@
+﻿@using static NodeApp.HttpServer.Models.CreateNewKeysModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model NodeApp.HttpServer.Models.CreateNewKeysModel
+<div>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="CreateKeys" method="post">
+                    <div class="form-group">
+                        <select class="list-group" asp-for="KeyType">
+                            <option disabled value="">@Localizer["Select"]</option>
+                            <option value="@KeyLength.Short">@Localizer["2048"]</option>
+                            <option value="@KeyLength.Medium">@Localizer["4096"]</option>
+                            <option value="@KeyLength.Long">@Localizer["8192"]</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">@Localizer["Expired"]</label>
+                        <input type="datetime-local" asp-for="ExpirationTime" class="form-control" />
+                        <span asp-validation-for="ExpirationTime" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="@Localizer["Generate"]" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

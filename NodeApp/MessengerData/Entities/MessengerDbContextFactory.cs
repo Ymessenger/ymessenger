@@ -1,0 +1,43 @@
+﻿/** 
+  *    This file is part of Y messenger.
+  *
+  *    Y messenger is free software: you can redistribute it and/or modify
+  *    it under the terms of the GNU Affero Public License as published by
+  *    the Free Software Foundation, either version 3 of the License, or
+  *    (at your option) any later version.
+  *
+  *    Y messenger is distributed in the hope that it will be useful,
+  *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  *    GNU Affero Public License for more details.
+  *
+  *    You should have received a copy of the GNU Affero Public License
+  *    along with Y messenger.  If not, see <https://www.gnu.org/licenses/>.
+  */
+using Microsoft.EntityFrameworkCore;
+using NodeApp.Interfaces;
+
+#pragma warning disable CS0618
+namespace NodeApp.MessengerData.Entities
+{
+    public class MessengerDbContextFactory : IDbContextFactory<MessengerDbContext>
+    {
+        private readonly DbContextOptions<MessengerDbContext> _options;       
+
+        public MessengerDbContextFactory()
+        {            
+            DbContextOptionsBuilder<MessengerDbContext> optionsBuilder = new DbContextOptionsBuilder<MessengerDbContext>()                 
+                .UseNpgsql(NodeSettings.Configs.MessengerDbConnection.ToString(), options => 
+                {                    
+                    options.CommandTimeout(5);                    
+                })
+                .EnableSensitiveDataLogging();
+            _options = optionsBuilder.Options;
+        }
+        public MessengerDbContext Create()
+        {
+            MessengerDbContext context = new MessengerDbContext(_options);            
+            return context;
+        }
+    }
+}

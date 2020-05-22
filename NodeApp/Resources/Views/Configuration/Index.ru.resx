@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdminEmail" xml:space="preserve">
+    <value>E-mail администратора ноды</value>
+  </data>
+  <data name="AllowedRegistration" xml:space="preserve">
+    <value>Разрешена регистрация администраторов</value>
+  </data>
+  <data name="Blockchain" xml:space="preserve">
+    <value>Восстановление данных из blockchain</value>
+  </data>
+  <data name="BlockchainBlocksCount" xml:space="preserve">
+    <value>Количество блоков</value>
+  </data>
+  <data name="BlockchainDatabaseOptions" xml:space="preserve">
+    <value>Параметры подключения к базе данных blockchain</value>
+  </data>
+  <data name="BlockchainRecovery" xml:space="preserve">
+    <value>Восстановление данных из blockchain</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Сменить пароль</value>
+  </data>
+  <data name="ClientsPort" xml:space="preserve">
+    <value>Порт для подключения пользователей</value>
+  </data>
+  <data name="ConfirmUsers" xml:space="preserve">
+    <value>Автоматически подтверждать зарегистрировавшихся пользователей</value>
+  </data>
+  <data name="ConnectionsParameters" xml:space="preserve">
+    <value>Параметры соединений</value>
+  </data>
+  <data name="CurrentSMS" xml:space="preserve">
+    <value>Текущие настройки</value>
+  </data>
+  <data name="DatabasesOptions" xml:space="preserve">
+    <value>Параметры баз данных</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Параметры Email-клиента</value>
+  </data>
+  <data name="EncryptionType.Allowed" xml:space="preserve">
+    <value>Шифрование полностью разрешено</value>
+  </data>
+  <data name="EncryptionType.NodeUsersForbidden" xml:space="preserve">
+    <value>Шифрование запрещено для пользователей в рамках одной ноды</value>
+  </data>
+  <data name="EncryptionType.TotallyForbidden" xml:space="preserve">
+    <value>Шифрование полностью запрещено</value>
+  </data>
+  <data name="FirstBlockCreatedAt" xml:space="preserve">
+    <value>Дата генерации первого блока</value>
+  </data>
+  <data name="Keys" xml:space="preserve">
+    <value>Ключи шифрования</value>
+  </data>
+  <data name="KeysCreatedAt" xml:space="preserve">
+    <value>Время генерации ключей</value>
+  </data>
+  <data name="KeysExpiredAt" xml:space="preserve">
+    <value>Время истечения срока действия ключей</value>
+  </data>
+  <data name="KeysId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="LastBlockCreatedAt" xml:space="preserve">
+    <value>Дата генерации последнего блока</value>
+  </data>
+  <data name="License" xml:space="preserve">
+    <value>Лицензия</value>
+  </data>
+  <data name="LicenseCost" xml:space="preserve">
+    <value>Стоимость</value>
+  </data>
+  <data name="LicenseCreatedAt" xml:space="preserve">
+    <value>Дата выдачи лицензии</value>
+  </data>
+  <data name="LicenseExiredAt" xml:space="preserve">
+    <value>Дата окончания лицензии</value>
+  </data>
+  <data name="LicenseTariff" xml:space="preserve">
+    <value>Тариф</value>
+  </data>
+  <data name="LicensorUrl" xml:space="preserve">
+    <value>URL-адрес лицензиара</value>
+  </data>
+  <data name="MaxDbBackups" xml:space="preserve">
+    <value>Максимальное количество хранящихся бекапов базы данных</value>
+  </data>
+  <data name="MessengerDatabaseOptions" xml:space="preserve">
+    <value>Параметры подключения к базе данных мессенджера</value>
+  </data>
+  <data name="NewKeys" xml:space="preserve">
+    <value>Сгенерировать новые ключи шифрования</value>
+  </data>
+  <data name="NodeAbout" xml:space="preserve">
+    <value>Описание ноды</value>
+  </data>
+  <data name="NodeEncryptionType" xml:space="preserve">
+    <value>Шифрование</value>
+  </data>
+  <data name="NodeInformation" xml:space="preserve">
+    <value>Информация о ноде</value>
+  </data>
+  <data name="NodeName" xml:space="preserve">
+    <value>Название ноды</value>
+  </data>
+  <data name="NodePermanentlyDeleting" xml:space="preserve">
+    <value>Удалять данные пользователей полностью</value>
+  </data>
+  <data name="NodeRegistrationMethod" xml:space="preserve">
+    <value>Способ регистрации на ноде</value>
+  </data>
+  <data name="NodeRouting" xml:space="preserve">
+    <value>Проксирование соединений клиентов с других нод</value>
+  </data>
+  <data name="NodesPort" xml:space="preserve">
+    <value>Порт для подключения других нод</value>
+  </data>
+  <data name="NodeStartDay" xml:space="preserve">
+    <value>Дата запуска ноды</value>
+  </data>
+  <data name="NodeStorage" xml:space="preserve">
+    <value>Хранение файлов</value>
+  </data>
+  <data name="NodeTag" xml:space="preserve">
+    <value>Тэг</value>
+  </data>
+  <data name="NodeVisible" xml:space="preserve">
+    <value>Видимость ноды в сети</value>
+  </data>
+  <data name="OpenStack" xml:space="preserve">
+    <value>OpenStack Swift</value>
+  </data>
+  <data name="PasswordSecurity" xml:space="preserve">
+    <value>Пароль и безопасность</value>
+  </data>
+  <data name="PushServerUrl" xml:space="preserve">
+    <value>URL-адрес push-сервера</value>
+  </data>
+  <data name="RedisServerOptions" xml:space="preserve">
+    <value>Параметры подключения к Redis-серверу</value>
+  </data>
+  <data name="RegistrationMethod.EmailRequired" xml:space="preserve">
+    <value>Для регистрации требуется email</value>
+  </data>
+  <data name="RegistrationMethod.NothingRequired" xml:space="preserve">
+    <value>Для регистрации ничего не требуется</value>
+  </data>
+  <data name="RegistrationMethod.PhoneRequired" xml:space="preserve">
+    <value>Для регистрации требуется телефон</value>
+  </data>
+  <data name="S3" xml:space="preserve">
+    <value>Amazon S3</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Выбрать</value>
+  </data>
+  <data name="SelectCountry" xml:space="preserve">
+    <value>Выберите страну</value>
+  </data>
+  <data name="SMS" xml:space="preserve">
+    <value>Параметры SMS-сервиса</value>
+  </data>
+  <data name="SupportEmail" xml:space="preserve">
+    <value>E-mail поддержки</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Конфигурация</value>
+  </data>
+  <data name="UserRegistrationAllowed" xml:space="preserve">
+    <value>Регистрация пользователей разрешена</value>
+  </data>
+</root>

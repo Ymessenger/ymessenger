@@ -1,0 +1,33 @@
+﻿@model NodeApp.Objects.SettingsObjects.SmsServicesConfiguration.SMSRUServiceConfiguration
+@using static NodeApp.Objects.SettingsObjects.SmsServicesConfiguration.SmsServiceTypes
+
+<div class="form-group">
+    <label asp-for="ServiceName" class="control-label"></label>
+    <input asp-for="ServiceName" class="form-control" value="@SMSRU" readonly />
+    <span asp-validation-for="ServiceName" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="SendUrl" class="control-label"></label>
+    <input asp-for="SendUrl" class="form-control" />
+    <span asp-validation-for="SendUrl" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="ApiId" class="control-label"></label>
+    <input asp-for="ApiId" class="form-control" />
+    <span asp-validation-for="ApiId" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Login" class="control-label"></label>
+    <input asp-for="Login" class="form-control" />
+    <span asp-validation-for="Login" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Password" class="control-label"></label>
+    <input asp-for="Password" class="form-control" />
+    <span asp-validation-for="Password" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="PartnerId" class="control-label"></label>
+    <input asp-for="PartnerId" class="form-control" />
+    <span asp-validation-for="PartnerId" class="text-danger"></span>
+</div>
